@@ -28,7 +28,7 @@ export class StorageService {
    * @returns Void return.
    */
   clear(): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.clear().subscribe(_ => resolve()));
+    return new Promise<any>(resolve => this.localStorage.clear().subscribe(_ => resolve(null)));
   }
 
   /**
@@ -37,7 +37,7 @@ export class StorageService {
    * @param value Object to store.
    */
   store(key: string, value: any): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.setItem(key, value).subscribe(_ => resolve()));
+    return new Promise<any>(resolve => this.localStorage.setItem(key, value).subscribe(_ => resolve(null)));
   }
 
   /**
@@ -45,7 +45,7 @@ export class StorageService {
    * @param key Key of item.
    */
   removeItem(key: string): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.removeItem(key).subscribe(_ => resolve()));
+    return new Promise<any>(resolve => this.localStorage.removeItem(key).subscribe(_ => resolve(null)));
   }
 
 }

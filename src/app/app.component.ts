@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CustomizeMessageService, MessageState, QuestionState } from './services/customize-message.service';
-import { SweetMessageComponent } from './components/sweet-message/sweet-message.component';
-import { SweetQuestionComponent } from './components/sweet-question/sweet-question.component';
+import { Component, OnInit } from '@angular/core';
 
 /**
  * App component.
@@ -12,68 +9,16 @@ import { SweetQuestionComponent } from './components/sweet-question/sweet-questi
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'MKSaúde';
-
-  /**
-   * Swal options.
-   */
-  public swalMessageOptions: MessageState = {
-    title: '',
-    content: '',
-    button: '',
-    dismissible: true,
-  };
-
-  /**
-   * Swal options.
-   */
-  public swalQuestionOptions: QuestionState = {
-    title: '',
-    content: '',
-    buttons: [],
-    dismissible: true,
-  };
-
-  /**
-   * View message child.
-   */
-  @ViewChild(SweetMessageComponent) messageComponent: SweetMessageComponent;
-
-  /**
-   * View qua=tion child.
-   */
-  @ViewChild(SweetQuestionComponent) questionComponent: SweetQuestionComponent;
+  title = 'my-app';
 
   /**
    * @ignore
    */
-  constructor(
-    private messageService: CustomizeMessageService,
-  ) { }
+  constructor() { }
 
   /**
    * @ignore
    */
-  ngOnInit() {
-
-    // define subscribe to listen new messsage subscribe
-    this.messageService.loaderStateMessage.subscribe((state: MessageState) => {
-      console.log(state);
-      this.swalMessageOptions = { ...state };
-      setTimeout(() => {
-        this.messageComponent.show();
-      }, 50);
-    });
-
-    // define subscribe to listen new question subscribe
-    this.messageService.loaderStateQuestion.subscribe((state: QuestionState) => {
-      console.log(state);
-      this.swalQuestionOptions = { ...state };
-      setTimeout(() => {
-        this.questionComponent.show();
-      }, 50);
-    });
-
-  }
+  ngOnInit() {}
 
 }

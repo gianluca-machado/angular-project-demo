@@ -13,7 +13,6 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
 // services
-import { CustomizeMessageService } from './services/customize-message.service';
 import { HttpRequestService } from './services/http-request.service';
 import { StorageService } from './services/storage.service';
 import { TokenService } from './services/token.service';
@@ -32,7 +31,6 @@ import { UtilsService } from './services/utils.service';
     BrowserAnimationsModule,
   ],
   providers: [
-    CustomizeMessageService,
     HttpRequestService,
     StorageService,
     TokenService,

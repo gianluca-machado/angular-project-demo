@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as jwtDecode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
 /**
  * Token Provider
@@ -38,7 +38,7 @@ export class TokenService {
    * Decode jwt token.
    */
   getDataToken(): any {
-    return jwtDecode(this.token);
+    return jwt_decode(this.token);
   }
 
 }
