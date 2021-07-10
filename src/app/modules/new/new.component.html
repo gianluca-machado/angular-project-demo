@@ -1,11 +1,6 @@
 <div nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="container">
   <div class="box padding" nz-col nzXs="22" nzSm="16" nzMd="12" nzLg="10" nzXl="8" nzXXl="8">
     <form nz-form [formGroup]="newForm" (ngSubmit)="submitForm()">
-      <nz-form-item class="text-center">
-        <img src="assets/logo.png" />
-      </nz-form-item>
-
-
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your name!">
           <nz-input-group nzPrefixIcon="user">
@@ -40,7 +35,7 @@
 
       <nz-form-item>
         <nz-form-control>
-          <label nz-checkbox formControlName="term">
+          <label nz-checkbox formControlName="term" class="margin-bottom">
             <span>Aceito os <a>termos e condições de uso</a></span>
           </label>
           <button nz-button nzType="primary" nzSize="large" nzBlock="true">Criar conta</button>
