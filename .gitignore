@@ -49,3 +49,7 @@ Thumbs.db
 certificate.cnf
 localhost.crt
 localhost.key
+
+# css
+compact.css
+dark.css
