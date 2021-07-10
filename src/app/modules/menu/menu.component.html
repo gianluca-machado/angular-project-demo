@@ -2,22 +2,9 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <!-- <li nz-submenu nzTitle="User" nzIcon="user">
-        <ul>
-          <li nz-menu-item>Tom</li>
-          <li nz-menu-item>Bill</li>
-          <li nz-menu-item>Alex</li>
-        </ul>
-      </li> -->
-      <!-- <li nz-submenu nzTitle="Team" nzIcon="team">
-        <ul>
-          <li nz-menu-item>Team 1</li>
-          <li nz-menu-item>Team 2</li>
-        </ul>
-      </li> -->
-      <li nz-menu-item (click)="logout()">
-        <i nz-icon nzType="logout" nzTheme="outline"></i>
-        <span>Sair</span>
+      <li nz-menu-item [nzSelected]="menu.selected" *ngFor="let menu of menus" (click)="navigate(menu)">
+        <i nz-icon [nzType]="menu.icon.nzType" [nzTheme]="menu.icon.nzTheme"></i>
+        <span> {{ menu.title }} </span>
       </li>
     </ul>
   </nz-sider>
@@ -27,13 +14,10 @@
         (click)="isCollapsed = !isCollapsed"></i>
     </nz-header>
     <nz-content>
-      <!-- <nz-breadcrumb>
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <div class="inner-content">
-        Bill is a cat.
-      </div> -->
+
+      <!-- router -->
+      <router-outlet></router-outlet>
+
     </nz-content>
     <nz-footer>Ant Design ©2019 Implement By Angular</nz-footer>
   </nz-layout>

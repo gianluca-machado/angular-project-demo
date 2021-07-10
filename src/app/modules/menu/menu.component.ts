@@ -10,6 +10,27 @@ export class MenuComponent implements OnInit {
 
   public isCollapsed = false;
 
+  public menus = [
+    {
+      route: 'dashboard',
+      title: 'Dashboard',
+      selected: true,
+      icon: {
+        nzType: 'dashboard',
+        nzTheme: 'outline',
+      }
+    },
+    {
+      route: 'login',
+      title: 'Sair',
+      selected: false,
+      icon: {
+        nzType: 'logout',
+        nzTheme: 'outline',
+      }
+    }
+  ];
+
   /**
    * @ignore
    */
@@ -22,8 +43,17 @@ export class MenuComponent implements OnInit {
    */
   ngOnInit() { }
 
-  logout() {
-    this.router.navigate(['login']);
+  navigate(menu: any) {
+    this.selectMenu(menu);
+    this.router.navigate([menu.route]);
+  }
+
+  selectMenu(menu: any) {
+    for (let i = 0; i < this.menus.length; i++) {
+      this.menus[i].selected = false;
+    }
+
+    menu.selected = true;
   }
 
 }
