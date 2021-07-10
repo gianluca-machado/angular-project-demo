@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
 
   public menus = [
     {
-      route: 'dashboard',
+      route: '/menu/dashboard',
       title: 'Dashboard',
       selected: true,
       icon: {
@@ -21,8 +21,17 @@ export class MenuComponent implements OnInit {
       }
     },
     {
-      route: 'login',
-      title: 'Sair',
+      route: '/menu/setting',
+      title: 'Setting',
+      selected: false,
+      icon: {
+        nzType: 'setting',
+        nzTheme: 'outline',
+      }
+    },
+    {
+      route: '/login',
+      title: 'Logout',
       selected: false,
       icon: {
         nzType: 'logout',
@@ -44,8 +53,10 @@ export class MenuComponent implements OnInit {
   ngOnInit() { }
 
   navigate(menu: any) {
+    console.log(menu);
+    
     this.selectMenu(menu);
-    this.router.navigate([menu.route]);
+    this.router.navigateByUrl(menu.route);
   }
 
   selectMenu(menu: any) {
