@@ -17,6 +17,7 @@ import { HttpRequestService } from './services/http-request.service';
 import { StorageService } from './services/storage.service';
 import { TokenService } from './services/token.service';
 import { UtilsService } from './services/utils.service';
+import { ThemeService } from './services/theme.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UtilsService } from './services/utils.service';
     StorageService,
     TokenService,
     UtilsService,
+    ThemeService,
   ],
   bootstrap: [
     AppComponent,
