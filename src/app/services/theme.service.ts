@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-
   public theme = '';
 
   constructor() { }
@@ -38,7 +37,7 @@ export class ThemeService {
       const themeElements = document.querySelectorAll('link[theme-link]');
 
       // get all of the style elements and remove all of theme from the document
-      themeElements.forEach(themeElement => {
+      themeElements.forEach((themeElement) => {
         // remove the prevoius theme styles from the document when the new theme styles already downloaded
         document.head.removeChild(themeElement);
       });

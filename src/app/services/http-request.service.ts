@@ -1,18 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { environment } from '../../environments/environment';
-import { TokenService } from './token.service';
-
 import { Observable } from 'rxjs';
 import { tap, retry } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { TokenService } from './token.service';
 
 /**
  * Http Request Provider
  */
 @Injectable()
 export class HttpRequestService {
-
   /**
    * @ignore
    */
@@ -28,7 +26,7 @@ export class HttpRequestService {
   getRequest(url: string, responseType: any = {}): Observable<any> {
     return this.http.get(environment.api_url + url, responseType)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -39,7 +37,6 @@ export class HttpRequestService {
    * @param body Body to request.
    */
   postRequest(url: string, body: any): Observable<any> {
-
     // create request options
     const options: any = {
       observe: 'response',
@@ -47,7 +44,7 @@ export class HttpRequestService {
 
     return this.http.post(environment.api_url + url, body, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -58,7 +55,6 @@ export class HttpRequestService {
    * @param body Body to request.
    */
   putRequest(url: string, body: any): Observable<any> {
-
     // create request options
     const options = {
       headers: {
@@ -68,7 +64,7 @@ export class HttpRequestService {
 
     return this.http.put(environment.api_url + url, body, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -88,14 +84,14 @@ export class HttpRequestService {
     const options = {
       headers: {
         'Content-Type': contentType,
-        Authorization: (replaceToken) ? replaceToken : token,
+        Authorization: (replaceToken) || token,
       },
     };
 
     // return
     return this.http.post(environment.api_url + url, body, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -106,7 +102,6 @@ export class HttpRequestService {
   * @returns Promise Request or Response return.
   */
   getRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-
     // get token
     const token: string = this.tokenProvider.getToken();
 
@@ -114,14 +109,14 @@ export class HttpRequestService {
     const options = {
       headers: {
         'Content-Type': contentType,
-        Authorization: (replaceToken) ? replaceToken : token,
+        Authorization: (replaceToken) || token,
       },
     };
 
     // return
     return this.http.get(environment.api_url + url, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -132,7 +127,6 @@ export class HttpRequestService {
    * @returns Promise Request or Response return.
    */
   putRequestWithAuthorization(url: string, body: any, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-
     // get token
     const token: string = this.tokenProvider.getToken();
 
@@ -140,14 +134,14 @@ export class HttpRequestService {
     const options = {
       headers: {
         'Content-Type': contentType,
-        Authorization: (replaceToken) ? replaceToken : token,
+        Authorization: (replaceToken) || token,
       },
     };
 
     // return
     return this.http.put(environment.api_url + url, body, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
@@ -158,7 +152,6 @@ export class HttpRequestService {
    * @returns Promise Request or Response return.
    */
   deleteRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-
     // get token
     const token: string = this.tokenProvider.getToken();
 
@@ -166,16 +159,15 @@ export class HttpRequestService {
     const options = {
       headers: {
         'Content-Type': contentType,
-        Authorization: (replaceToken) ? replaceToken : token,
+        Authorization: (replaceToken) || token,
       },
     };
 
     // return
     return this.http.delete(environment.api_url + url, options)
       .pipe(
-        tap(data => console.log(data)),
+        tap((data) => console.log(data)),
         retry(3),
       );
   }
-
 }

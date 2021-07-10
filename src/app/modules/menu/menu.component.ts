@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
-
+export class MenuComponent {
   public isCollapsed = false;
 
   public menus = [
@@ -18,7 +17,7 @@ export class MenuComponent implements OnInit {
       icon: {
         nzType: 'dashboard',
         nzTheme: 'outline',
-      }
+      },
     },
     {
       route: '/menu/setting',
@@ -27,7 +26,7 @@ export class MenuComponent implements OnInit {
       icon: {
         nzType: 'setting',
         nzTheme: 'outline',
-      }
+      },
     },
     {
       route: '/login',
@@ -36,8 +35,8 @@ export class MenuComponent implements OnInit {
       icon: {
         nzType: 'logout',
         nzTheme: 'outline',
-      }
-    }
+      },
+    },
   ];
 
   /**
@@ -47,14 +46,9 @@ export class MenuComponent implements OnInit {
     private router: Router,
   ) { }
 
-  /**
-   * @ignore
-   */
-  ngOnInit() { }
-
   navigate(menu: any) {
     console.log(menu);
-    
+
     this.selectMenu(menu);
     this.router.navigateByUrl(menu.route);
   }
@@ -63,8 +57,6 @@ export class MenuComponent implements OnInit {
     for (let i = 0; i < this.menus.length; i++) {
       this.menus[i].selected = false;
     }
-
     menu.selected = true;
   }
-
 }

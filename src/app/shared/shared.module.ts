@@ -2,13 +2,11 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ComponentsModule } from './../components/components.module';
 
-/** config angular i18n **/
+// config angular i18n
 import pt from '@angular/common/locales/pt';
-registerLocaleData(pt);
 
-/** config ng-zorro-antd i18n **/
+// config ng-zorro-antd i18n
 import { NZ_I18N, pt_BR } from 'ng-zorro-antd/i18n';
 
 // icons
@@ -23,11 +21,14 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { ComponentsModule } from '../components/components.module';
+
+registerLocaleData(pt);
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesignIcons[key]);
 
 @NgModule({
   imports: [

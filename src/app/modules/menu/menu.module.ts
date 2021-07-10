@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from 'src/app/shared/shared.module';
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [

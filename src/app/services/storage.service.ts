@@ -6,12 +6,11 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
  */
 @Injectable()
 export class StorageService {
-
   /**
    * @ignore
    */
   constructor(
-    public localStorage: LocalStorage,
+    private localStorage: LocalStorage,
   ) { }
 
   /**
@@ -20,7 +19,7 @@ export class StorageService {
    * @returns Any return.
    */
   retrieve(key: string): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.getItem(key).subscribe(value => resolve(value)));
+    return new Promise<any>((resolve) => this.localStorage.getItem(key).subscribe((value) => resolve(value)));
   }
 
   /**
@@ -28,7 +27,7 @@ export class StorageService {
    * @returns Void return.
    */
   clear(): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.clear().subscribe(_ => resolve(null)));
+    return new Promise<any>((resolve) => this.localStorage.clear().subscribe(() => resolve(null)));
   }
 
   /**
@@ -37,7 +36,7 @@ export class StorageService {
    * @param value Object to store.
    */
   store(key: string, value: any): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.setItem(key, value).subscribe(_ => resolve(null)));
+    return new Promise<any>((resolve) => this.localStorage.setItem(key, value).subscribe(() => resolve(null)));
   }
 
   /**
@@ -45,7 +44,6 @@ export class StorageService {
    * @param key Key of item.
    */
   removeItem(key: string): Promise<any> {
-    return new Promise<any>(resolve => this.localStorage.removeItem(key).subscribe(_ => resolve(null)));
+    return new Promise<any>((resolve) => this.localStorage.removeItem(key).subscribe(() => resolve(null)));
   }
-
 }

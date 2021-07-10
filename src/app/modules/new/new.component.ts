@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./new.component.scss'],
 })
 export class NewComponent implements OnInit {
-
   public newForm: FormGroup;
 
   /**
@@ -37,5 +36,4 @@ export class NewComponent implements OnInit {
     console.log(value);
     this.router.navigate(['login']);
   }
-
 }
