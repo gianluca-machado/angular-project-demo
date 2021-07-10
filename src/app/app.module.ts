@@ -27,7 +27,7 @@ import { ThemeService } from './services/theme.service';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    BrowserModule.withServerTransition({ appId: 'my-app' }),
+    BrowserModule.withServerTransition({ appId: 'ecommerce-integrator-system' }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
   ],

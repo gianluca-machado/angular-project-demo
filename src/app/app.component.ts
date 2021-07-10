@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'my-app';
+  title = 'ecommerce-integrator-system';
 
   /**
    * @ignore
