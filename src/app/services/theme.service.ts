@@ -1,20 +1,38 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  public theme = '';
+  private theme = '';
 
-  constructor() { }
+  private storage_key: string = 'theme';
+
+  constructor(
+    private storageService: StorageService,
+  ) { }
+
+  async setDefaultTheme() {
+    const storage_theme = await this.storageService.retrieve(this.storage_key);
+    if (storage_theme) {
+      this.theme = storage_theme;
+    } else {
+      this.storageService.store('theme', this.theme);
+    }
+    this.setTheme();
+  }
 
   changeTheme() {
-    // the theme to which should be switched
     this.theme = this.theme === 'dark' ? '' : 'dark';
+    this.setTheme();
+  }
+
+  setTheme() {
+    this.storageService.store('theme', this.theme);
 
     // theme url to which should be switched
     let themeUrl = './assets/themes/compact.css';
-
     if (this.theme === 'dark') {
       themeUrl = './assets/themes/dark.css';
     }

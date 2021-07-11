@@ -6,10 +6,6 @@
   transition: color 0.3s;
 }
 
-.trigger:hover {
-  color: #1890ff;
-}
-
 .logo {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
@@ -17,7 +13,6 @@
 }
 
 nz-header {
-  background: #fff;
   padding: 0;
 }
 

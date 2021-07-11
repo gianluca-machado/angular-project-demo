@@ -1,17 +1,28 @@
 .container {
   height: 100vh;
+  width: 100vw;
+}
+
+.background-image {
+  background: url('/assets/images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.box {
-  background-color: rgba(255, 255, 255, 0.8);
-  min-height: 40vh;
-  border-radius: 5px;
-  display: flex;
+.divider {
+  width: 100%;
+  height: 100vh;
 }
 
 .ant-form {
   width: 100%;
+}
+
+.border-input-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  line-height: 2.5;
+  box-shadow: none;
 }

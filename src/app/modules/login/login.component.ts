@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
+  public passwordVisible: boolean = false;
+
   /**
    * @ignore
    */
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])],
+      remember: [false],
     });
   }
 
@@ -37,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['menu']);
   }
 
-  clickNew() {
+  clickCreateAccount() {
     this.router.navigate(['new']);
   }
 }

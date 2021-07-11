@@ -1,47 +1,58 @@
-<div nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="container">
-  <div class="box padding" nz-col nzXs="22" nzSm="16" nzMd="12" nzLg="10" nzXl="8" nzXXl="8">
-    <form nz-form [formGroup]="newForm" (ngSubmit)="submitForm()">
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your name!">
-          <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="name" placeholder="Nome completo" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+<div nz-row nzType="flex" nzJustify="center" nzAlign="middle" class="container no-padding">
+  <div class="padding divider display-grid" nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="10" nzXl="8" nzXXl="8">
+    <div nz-row nzType="flex" nzJustify="center" nzAlign="middle">
+      <div nz-col nzXs="22" nzSm="22" nzMd="22" nzLg="22" nzXl="22" nzXXl="22">
+        <form nz-form [formGroup]="newForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your name">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="name" placeholder="Complete Name" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your e-mail!">
-          <nz-input-group nzPrefixIcon="user">
-            <input type="text" nz-input formControlName="email" placeholder="E-mail" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your e-mail">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your password!">
-          <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="password" placeholder="Senha" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your password">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="password" placeholder="Password" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please confirm your password!">
-          <nz-input-group nzPrefixIcon="lock">
-            <input type="password" nz-input formControlName="confirm" placeholder="Confirmar senha" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please confirm your password">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
+                <input type="password" nz-input formControlName="confirm" placeholder="Confirm Password" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-control>
-          <label nz-checkbox formControlName="term" class="margin-bottom">
-            <span>Aceito os <a>termos e condições de uso</a></span>
-          </label>
-          <button nz-button nzType="primary" nzSize="large" nzBlock="true">Criar conta</button>
-        </nz-form-control>
-      </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <label nz-checkbox formControlName="term" class="margin-top margin-bottom">
+                <span>I agree to the <a>terms and conditions</a></span>
+              </label>
+              <button nz-button nzType="primary" nzSize="large" nzBlock="true"
+                class="text-uppercase font-weight-500 margin-top">
+                Create Account
+              </button>
+            </nz-form-control>
+          </nz-form-item>
 
-    </form>
+        </form>
+      </div>
+    </div>
   </div>
+
+  <div class="padding divider background-image" nz-col nzXs="0" nzSm="0" nzMd="12" nzLg="14" nzXl="16" nzXXl="16">
+  </div>
+
 </div>
