@@ -21,6 +21,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { ComponentsModule } from '../components/components.module';
 
 registerLocaleData(pt);
@@ -43,6 +45,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzMenuModule,
     NzButtonModule,
     NzCheckboxModule,
+    NzListModule,
+    NzMessageModule,
   ],
   declarations: [],
   exports: [
@@ -57,6 +61,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzMenuModule,
     NzButtonModule,
     NzCheckboxModule,
+    NzListModule,
+    NzMessageModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
