@@ -12,12 +12,8 @@
     "start:ssl": "npm run generate:css && ng serve -o --port 4201 --ssl --ssl-key localhost.key --ssl-cert localhost.crt",
     "build:prod": "ng build --prod --build-optimizer",
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json",
-    "heroku-postbuild": "ng build --prod --build-optimizer --aot"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+    "heroku-postbuild": "ng build --prod --build-optimizer --aot",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
