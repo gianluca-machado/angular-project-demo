@@ -69,4 +69,8 @@ export class ThemeService {
 
     newThemeElement.href = themeUrl;
   }
+
+  getCurrentTheme(): string {
+    return this.theme;
+  }
 }

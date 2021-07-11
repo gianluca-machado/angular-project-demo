@@ -1,1 +1,16 @@
-<p>setting works!</p>
+<nz-list>
+  <nz-list-item class="setting-list-item">
+    <ng-container>
+      <nz-list-item-meta nzAvatar="./assets/images/night-mode.png" nzDescription="Change theme">
+        <nz-list-item-meta-title>
+          Dark Mode
+        </nz-list-item-meta-title>
+      </nz-list-item-meta>
+      <ul nz-list-item-actions>
+        <nz-list-item-action>
+          <nz-switch nzSize="default" [(ngModel)]="darkmode" (ngModelChange)="onChangeDarkMode()"></nz-switch>
+        </nz-list-item-action>
+      </ul>
+    </ng-container>
+  </nz-list-item>
+</nz-list>
