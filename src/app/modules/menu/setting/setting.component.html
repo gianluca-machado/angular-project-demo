@@ -13,17 +13,17 @@
         <nz-list-item-action *ngIf="item.actionType === 'select'">
           <nz-select [nzDropdownClassName]="item.class" [nzAllowClear]="false" nzPlaceHolder="Select language"
             [nzCustomTemplate]="templateSelect" nzSize="large" [nzBorderless]="true" [(ngModel)]="item.value"
-            (ngModelChange)="item.onChange()">
+            (ngModelChange)="item.onChange($event)">
             <nz-option *ngFor="let option of item.options" [nzLabel]="option.label" [nzValue]="option.value"
               nzCustomContent>
               <img nz-image width="30px" height="30px" [nzSrc]="getImageOption(option.value)" [alt]="option.value"
-                class="option-image" />
+                class="option-image" nzDisablePreview />
               {{ option.label }}
             </nz-option>
           </nz-select>
           <ng-template #templateSelect let-selected>
             <img nz-image width="30px" height="30px" [nzSrc]="getImageOption(selected.nzValue)" [alt]="selected.nzValue"
-              class="option-image" />
+              class="option-image" nzDisablePreview />
             {{ selected.nzLabel }}
           </ng-template>
         </nz-list-item-action>

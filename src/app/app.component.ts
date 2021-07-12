@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from './services/language.service';
 import { ThemeService } from './services/theme.service';
 
 /**
@@ -14,9 +15,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private themeService: ThemeService,
+    private languageService: LanguageService,
   ) {}
 
   ngOnInit() {
     this.themeService.setDefaultTheme();
+    this.languageService.setDefaultLanguage();
   }
 }

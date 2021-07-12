@@ -18,7 +18,7 @@ export class ThemeService {
     if (storage_theme) {
       this.theme = storage_theme;
     } else {
-      this.storageService.store('theme', this.theme);
+      this.storageService.store(this.storage_key, this.theme);
     }
     this.setTheme();
   }
@@ -29,7 +29,7 @@ export class ThemeService {
   }
 
   setTheme() {
-    this.storageService.store('theme', this.theme);
+    this.storageService.store(this.storage_key, this.theme);
 
     // theme url to which should be switched
     let themeUrl = './assets/themes/compact.css';
@@ -70,7 +70,7 @@ export class ThemeService {
     newThemeElement.href = themeUrl;
   }
 
-  getCurrentTheme(): string {
-    return this.theme;
+  getCurrentTheme() {
+    return this.storageService.retrieve(this.storage_key);
   }
 }

@@ -18,6 +18,7 @@ import { StorageService } from './services/storage.service';
 import { TokenService } from './services/token.service';
 import { UtilsService } from './services/utils.service';
 import { ThemeService } from './services/theme.service';
+import { LanguageService } from './services/language.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ThemeService } from './services/theme.service';
     TokenService,
     UtilsService,
     ThemeService,
+    LanguageService,
   ],
   bootstrap: [
     AppComponent,

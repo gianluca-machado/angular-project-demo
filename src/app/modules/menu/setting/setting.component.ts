@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageService } from 'src/app/services/language.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./setting.component.scss'],
 })
 export class SettingComponent {
-  public darkmode = false;
+  public loading = true;
 
   public items: any[] = [
     {
@@ -37,18 +38,25 @@ export class SettingComponent {
       value: 'PT-BR',
       actionType: 'select',
       class: 'fix-virtual-scrolling-height',
-      onChange: () => this.onChangeLanguage(),
+      onChange: (language) => this.onChangeLanguage(language),
     },
   ];
 
   constructor(
     private themeService: ThemeService,
+    private languageService: LanguageService,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     // init dark mode value
-    const item = this.items.find((o) => o.type === 'darkmode');
-    item.value = this.themeService.getCurrentTheme() === 'dark';
+    const darkmode = this.items.find((o) => o.type === 'darkmode');
+    darkmode.value = await this.themeService.getCurrentTheme() === 'dark';
+
+    // init language value
+    const language = this.items.find((o) => o.type === 'language');
+    language.value = await this.languageService.getCurrentLanguage();
+
+    this.loading = false;
   }
 
   onChangeDarkMode() {
@@ -56,8 +64,8 @@ export class SettingComponent {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  onChangeLanguage() {
-    console.log('onChangeLanguage');
+  onChangeLanguage(language) {
+    this.languageService.changeLanguage(language);
   }
 
   // eslint-disable-next-line class-methods-use-this
