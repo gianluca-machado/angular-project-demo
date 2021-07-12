@@ -1,0 +1,44 @@
+{
+  "menu": {
+    "item": {
+      "settings": "Configurações",
+      "dashboard": "Painel",
+      "logout": "Sair"
+    }
+  },
+  "settings": {
+    "darkmode": {
+      "description": "Tema do Sistema",
+      "title": "Modo Escuro"
+    },
+    "language": {
+      "description": "Idioma do Sistema",
+      "title": "Idioma"
+    }
+  },
+  "login": {
+    "form": {
+      "email": "E-mail",
+      "password": "Senha",
+      "remember_me": "Lembrar-me",
+      "login": "Entrar",
+      "create_account": "Criar Conta",
+      "email_error": "Por favor informe seu e-mail",
+      "password_error": "Por favor informe sua senha"
+    }
+  },
+  "create_account": {
+    "form": {
+      "name": "Nome Completo",
+      "email": "E-mail",
+      "password": "Senha",
+      "confirm_password": "Confirmar Senha",
+      "agreement": "Eu aceito os <a href=\"{{url}}\">termos e condições</a>",
+      "submit_button": "Criar Conta",
+      "name_error": "Por favor informe seu nome",
+      "email_error": "Por favor informe seu e-mail",
+      "password_error": "Por favor informe sua senha",
+      "confirm_password_error": "Por favor confirme sua senha"
+    }
+  }
+}

@@ -14,8 +14,8 @@ export class SettingComponent {
     {
       type: 'darkmode',
       avatar: './assets/images/night-mode.png',
-      description: 'Change system theme',
-      title: 'Dark Mode',
+      description: 'settings.darkmode.description',
+      title: 'settings.darkmode.title',
       value: false,
       actionType: 'switch',
       onChange: () => this.onChangeDarkMode(),
@@ -23,19 +23,19 @@ export class SettingComponent {
     {
       type: 'language',
       avatar: './assets/images/languages.png',
-      description: 'Change system language',
-      title: 'Language',
+      description: 'settings.language.description',
+      title: 'settings.language.title',
       options: [
         {
           label: 'Português - Brasil',
-          value: 'PT-BR',
+          value: 'pt-BR',
         },
         {
           label: 'English',
-          value: 'EN',
+          value: 'en',
         },
       ],
-      value: 'PT-BR',
+      value: 'pt-BR',
       actionType: 'select',
       class: 'fix-virtual-scrolling-height',
       onChange: (language) => this.onChangeLanguage(language),

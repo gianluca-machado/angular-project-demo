@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
   public menus = [
     {
       route: '/menu/dashboard',
-      title: 'Dashboard',
+      title: 'menu.item.dashboard',
       selected: true,
       icon: {
         nzType: 'dashboard',
@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
     },
     {
       route: '/menu/setting',
-      title: 'Setting',
+      title: 'menu.item.settings',
       selected: false,
       icon: {
         nzType: 'setting',
@@ -30,7 +30,7 @@ export class MenuComponent implements OnInit {
     },
     {
       route: '/login',
-      title: 'Logout',
+      title: 'menu.item.logout',
       selected: false,
       icon: {
         nzType: 'logout',

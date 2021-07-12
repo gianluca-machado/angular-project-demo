@@ -1,9 +1,11 @@
 <nz-list>
   <nz-list-item class="setting-list-item" *ngFor="let item of items">
     <ng-container>
-      <nz-list-item-meta [nzAvatar]="item.avatar" [nzDescription]="item.description">
+      <nz-list-item-meta [nzAvatar]="item.avatar" nzDescription="{{ item.description | translate }}">
         <nz-list-item-meta-title>
-          {{ item.title }}
+          <span>
+            {{ item.title | translate }}
+          </span>
         </nz-list-item-meta-title>
       </nz-list-item-meta>
       <ul nz-list-item-actions>

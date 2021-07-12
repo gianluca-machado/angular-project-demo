@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class NewComponent implements OnInit {
   public newForm: FormGroup;
 
+  public param_agreement: any = { url: 'https://www.thecampusqdl.com/uploads/files/pdf_sample_2.pdf' };
+
   /**
    * @ignore
    */

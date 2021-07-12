@@ -5,18 +5,20 @@
         <form nz-form [formGroup]="loginForm">
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your e-mail">
+            <nz-form-control nzErrorTip="{{ 'login.form.email_error' | translate }}">
               <nz-input-group nzPrefixIcon="user" nzSize="large" class="border-input-control">
-                <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+                <input type="text" nz-input formControlName="email"
+                  placeholder="{{ 'login.form.email' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your password">
+            <nz-form-control nzErrorTip="{{ 'login.form.password_error' | translate }}">
               <nz-input-group nzPrefixIcon="lock" nzSize="large" [nzSuffix]="suffixTemplate"
                 class="border-input-control">
-                <input type="password" nz-input formControlName="password" placeholder="Password"
+                <input type="password" nz-input formControlName="password"
+                  placeholder="{{ 'login.form.password' | translate }}"
                   [type]="passwordVisible ? 'text' : 'password'" />
               </nz-input-group>
               <ng-template #suffixTemplate>
@@ -29,7 +31,7 @@
           <nz-form-item class="margin-top">
             <nz-form-control>
               <label nz-checkbox formControlName="remember">
-                <span>Remember me</span>
+                <span>{{ 'login.form.remember_me' | translate }}</span>
               </label>
             </nz-form-control>
           </nz-form-item>
@@ -39,11 +41,11 @@
               <div class="display-flex">
                 <button nz-button nzType="primary" nzSize="large" nzBlock="true"
                   class="text-uppercase font-weight-500 button-margin-right" (click)="submitForm()">
-                  Login
+                  {{ 'login.form.login' | translate }}
                 </button>
                 <button nz-button nzType="default" nzSize="large" nzBlock="true"
                   class="text-uppercase font-weight-500 button-margin-left" (click)="clickCreateAccount()">
-                  Create Account
+                  {{ 'login.form.create_account' | translate }}
                 </button>
               </div>
             </nz-form-control>

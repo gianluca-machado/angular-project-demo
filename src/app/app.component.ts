@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private languageService: LanguageService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.themeService.setDefaultTheme();

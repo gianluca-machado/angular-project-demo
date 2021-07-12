@@ -4,33 +4,37 @@
       <div nz-col nzXs="22" nzSm="22" nzMd="22" nzLg="22" nzXl="22" nzXXl="22">
         <form nz-form [formGroup]="newForm" (ngSubmit)="submitForm()">
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your name">
+            <nz-form-control nzErrorTip="{{ 'create_account.form.name_error' | translate }}">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
-                <input type="text" nz-input formControlName="name" placeholder="Complete Name" />
+                <input type="text" nz-input formControlName="name"
+                  placeholder="{{ 'create_account.form.name' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your e-mail">
+            <nz-form-control nzErrorTip="{{ 'create_account.form.email_error' | translate }}">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
-                <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+                <input type="text" nz-input formControlName="email"
+                  placeholder="{{ 'login.form.email' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please input your password">
+            <nz-form-control nzErrorTip="{{ 'create_account.form.password_error' | translate }}">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
-                <input type="password" nz-input formControlName="password" placeholder="Password" />
+                <input type="password" nz-input formControlName="password"
+                  placeholder="{{ 'create_account.form.password' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="Please confirm your password">
+            <nz-form-control nzErrorTip="{{ 'create_account.form.confirm_password_error' | translate }}">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
-                <input type="password" nz-input formControlName="confirm" placeholder="Confirm Password" />
+                <input type="password" nz-input formControlName="confirm"
+                  placeholder="{{ 'create_account.form.confirm_password' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
@@ -38,11 +42,11 @@
           <nz-form-item>
             <nz-form-control>
               <label nz-checkbox formControlName="term" class="margin-top margin-bottom">
-                <span>I agree to the <a>terms and conditions</a></span>
+                <span [innerHTML]="'create_account.form.agreement' | translate:param_agreement"></span>
               </label>
               <button nz-button nzType="primary" nzSize="large" nzBlock="true"
                 class="text-uppercase font-weight-500 margin-top">
-                Create Account
+                {{ 'create_account.form.submit_button' | translate }}
               </button>
             </nz-form-control>
           </nz-form-item>
