@@ -1,14 +1,31 @@
 <nz-list>
-  <nz-list-item class="setting-list-item">
+  <nz-list-item class="setting-list-item" *ngFor="let item of items">
     <ng-container>
-      <nz-list-item-meta nzAvatar="./assets/images/night-mode.png" nzDescription="Change theme">
+      <nz-list-item-meta [nzAvatar]="item.avatar" [nzDescription]="item.description">
         <nz-list-item-meta-title>
-          Dark Mode
+          {{ item.title }}
         </nz-list-item-meta-title>
       </nz-list-item-meta>
       <ul nz-list-item-actions>
-        <nz-list-item-action>
-          <nz-switch nzSize="default" [(ngModel)]="darkmode" (ngModelChange)="onChangeDarkMode()"></nz-switch>
+        <nz-list-item-action *ngIf="item.actionType === 'switch'">
+          <nz-switch nzSize="default" [(ngModel)]="item.value" (ngModelChange)="item.onChange()"></nz-switch>
+        </nz-list-item-action>
+        <nz-list-item-action *ngIf="item.actionType === 'select'">
+          <nz-select [nzDropdownClassName]="item.class" [nzAllowClear]="false" nzPlaceHolder="Select language"
+            [nzCustomTemplate]="templateSelect" nzSize="large" [nzBorderless]="true" [(ngModel)]="item.value"
+            (ngModelChange)="item.onChange()">
+            <nz-option *ngFor="let option of item.options" [nzLabel]="option.label" [nzValue]="option.value"
+              nzCustomContent>
+              <img nz-image width="30px" height="30px" [nzSrc]="getImageOption(option.value)" [alt]="option.value"
+                class="option-image" />
+              {{ option.label }}
+            </nz-option>
+          </nz-select>
+          <ng-template #templateSelect let-selected>
+            <img nz-image width="30px" height="30px" [nzSrc]="getImageOption(selected.nzValue)" [alt]="selected.nzValue"
+              class="option-image" />
+            {{ selected.nzLabel }}
+          </ng-template>
         </nz-list-item-action>
       </ul>
     </ng-container>

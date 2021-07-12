@@ -5,17 +5,15 @@ module.exports = {
   },
   toAdd: {
     dark: [
-      '.inner-content { background: #1f1f1f; min-height: 100%; border-radius: 5px; }',
+      '.inner-content { background: #1f1f1f; }',
     ],
     compact: [
-      '.inner-content { background: #ffffff; min-height: 100%; border-radius: 5px; }',
+      '.inner-content { background: #ffffff; }',
+      '.ant-layout-header { background: #ffffff; }',
     ],
   },
   toReplace: {
-    compact: [{
-      to: '.ant-layout-header{height:64px;padding:0 50px;color:rgba(0,0,0,.85);line-height:64px;background:#001529}',
-      from: '.ant-layout-header{height:64px;padding:0 50px;color:rgba(0,0,0,.85);line-height:64px;background:#ffffff}',
-    }],
+    compact: [],
     dark: [],
   },
   toChange: {

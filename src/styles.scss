@@ -24,6 +24,12 @@ body {
 }
 
 .setting-list-item .ant-avatar {
-  width: 45px !important;
-  height: 45px !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  margin: 5px;
+}
+
+.fix-virtual-scrolling-height cdk-virtual-scroll-viewport {
+  height: 90px !important;
 }
