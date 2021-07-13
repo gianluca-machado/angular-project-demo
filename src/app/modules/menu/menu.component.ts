@@ -59,7 +59,10 @@ export class MenuComponent implements OnInit {
 
   selectMenu(menu: any) {
     this.clearMenuSelected();
-    menu.selected = true;
+
+    if (menu) {
+      menu.selected = true;
+    }
   }
 
   selectMenuByUrl() {

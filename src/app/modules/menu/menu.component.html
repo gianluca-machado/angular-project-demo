@@ -12,8 +12,8 @@
     </div>
 
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-menu-item [nzSelected]="menu.selected" *ngFor="let menu of menus" (click)="navigate(menu)"
-        [ngClass]="{'no-padding-top': menu.selected}">
+      <li nz-menu-item [nzSelected]="menu?.selected" *ngFor="let menu of menus" (click)="navigate(menu)"
+        [ngClass]="{'no-padding-top': menu?.selected}">
         <i nz-icon [nzType]="menu.icon.nzType" [nzTheme]="menu.icon.nzTheme"></i>
         <span> {{ menu.title | translate }} </span>
       </li>
