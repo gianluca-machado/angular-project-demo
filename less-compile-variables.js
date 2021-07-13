@@ -6,10 +6,12 @@ module.exports = {
   toAdd: {
     dark: [
       '.inner-content { background: #1f1f1f; }',
+      '.logo-text-color { color: #2A9DF4; }',
     ],
     compact: [
       '.inner-content { background: #ffffff; }',
       '.ant-layout-header { background: #ffffff; }',
+      '.logo-text-color { color: #ffffff; }',
     ],
   },
   toReplace: {

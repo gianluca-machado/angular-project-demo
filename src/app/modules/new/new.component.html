@@ -3,7 +3,9 @@
     <div nz-row nzType="flex" nzJustify="center" nzAlign="middle">
       <div nz-col nzXs="22" nzSm="22" nzMd="22" nzLg="22" nzXl="22" nzXXl="22">
         <form nz-form [formGroup]="newForm" (ngSubmit)="submitForm()">
-          <nz-form-item>
+          <img nz-image width="60px" height="60px" nzSrc="./assets/images/logo.png" alt="Logo" nzDisablePreview />
+
+          <nz-form-item class="margin-top-50px">
             <nz-form-control nzErrorTip="{{ 'create_account.form.name_error' | translate }}">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
                 <input type="text" nz-input formControlName="name"
@@ -39,7 +41,7 @@
             </nz-form-control>
           </nz-form-item>
 
-          <nz-form-item>
+          <nz-form-item class="margin-top-50px">
             <nz-form-control>
               <label nz-checkbox formControlName="term" class="margin-top margin-bottom">
                 <span [innerHTML]="'create_account.form.agreement' | translate:param_agreement"></span>

@@ -3,8 +3,9 @@
     <div nz-row nzType="flex" nzJustify="center" nzAlign="middle">
       <div nz-col nzXs="22" nzSm="22" nzMd="22" nzLg="22" nzXl="22" nzXXl="22">
         <form nz-form [formGroup]="loginForm">
+          <img nz-image width="60px" height="60px" nzSrc="./assets/images/logo.png" alt="Logo" nzDisablePreview />
 
-          <nz-form-item>
+          <nz-form-item class="margin-top-50px">
             <nz-form-control nzErrorTip="{{ 'login.form.email_error' | translate }}">
               <nz-input-group nzPrefixIcon="user" nzSize="large" class="border-input-control">
                 <input type="text" nz-input formControlName="email"
@@ -36,7 +37,7 @@
             </nz-form-control>
           </nz-form-item>
 
-          <nz-form-item class="margin-top">
+          <nz-form-item class="margin-top-50px">
             <nz-form-control>
               <div class="display-flex">
                 <button nz-button nzType="primary" nzSize="large" nzBlock="true"

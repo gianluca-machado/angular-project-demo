@@ -27,6 +27,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { TranslateModule } from '@ngx-translate/core';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { ComponentsModule } from '../components/components.module';
 import { LanguageService } from '../services/language.service';
 
@@ -56,6 +57,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzSelectModule,
     NzImageModule,
     TranslateModule.forChild(LanguageService.LoaderForChild()),
+    NzDividerModule,
   ],
   declarations: [],
   exports: [
@@ -76,6 +78,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzSelectModule,
     NzImageModule,
     TranslateModule,
+    NzDividerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
