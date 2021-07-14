@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import faker from 'faker';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { LanguageService } from 'src/app/services/language.service';
 import { environment } from 'src/environments/environment';
+import { NewService } from './new.service';
 
 @Component({
   selector: 'app-new',
@@ -14,7 +16,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./new.component.scss'],
 })
 export class NewComponent implements OnInit {
-  public newForm!: FormGroup;
+  public loading: boolean = false;
+
+  public newForm: FormGroup;
 
   public param_agreement: any = { url: 'https://www.thecampusqdl.com/uploads/files/pdf_sample_2.pdf' };
 
@@ -26,6 +30,8 @@ export class NewComponent implements OnInit {
     private router: Router,
     private nzMessageService: NzMessageService,
     private translate: TranslateService,
+    private languageService: LanguageService,
+    private newService: NewService,
   ) { }
 
   /**
@@ -46,7 +52,7 @@ export class NewComponent implements OnInit {
 
       this.newForm.patchValue({
         name: faker.name.findName(),
-        email: faker.internet.email(),
+        email: faker.internet.email().toLowerCase(),
         password,
         confirm: password,
         term: true,
@@ -67,7 +73,7 @@ export class NewComponent implements OnInit {
     return {};
   };
 
-  submitForm() {
+  async submitForm() {
     const value = this.newForm.getRawValue();
     console.log(value);
 
@@ -82,11 +88,24 @@ export class NewComponent implements OnInit {
 
     if (this.newForm.valid) {
       if (!this.newForm.controls.term.value) {
-        this.translate.get('create_account.form.agreement_warning').subscribe((res: string) => {
-          this.nzMessageService.warning(res);
-        });
+        const message = await this.languageService.get('create_account.form.agreement_warning');
+        this.nzMessageService.warning(message);
       } else {
-        this.router.navigate(['login']);
+        this.loading = true;
+        try {
+          const response = await this.newService.createNewUser(value);
+          console.log(response);
+
+          this.router.navigate(['login']);
+        } catch (error) {
+          console.error(error);
+          // email already in use
+
+          // const message = await this.languageService.get('create_account.form.default_error_api');
+          this.nzMessageService.error(error.message);
+        } finally {
+          this.loading = false;
+        }
       }
     }
   }

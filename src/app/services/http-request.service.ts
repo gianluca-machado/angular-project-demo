@@ -11,6 +11,8 @@ import { TokenService } from './token.service';
  */
 @Injectable()
 export class HttpRequestService {
+  private retry: number = 1;
+
   /**
    * @ignore
    */
@@ -27,7 +29,7 @@ export class HttpRequestService {
     return this.http.get(environment.api_url + url, responseType)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -45,7 +47,7 @@ export class HttpRequestService {
     return this.http.post(environment.api_url + url, body, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -65,7 +67,7 @@ export class HttpRequestService {
     return this.http.put(environment.api_url + url, body, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -92,7 +94,7 @@ export class HttpRequestService {
     return this.http.post(environment.api_url + url, body, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -117,7 +119,7 @@ export class HttpRequestService {
     return this.http.get(environment.api_url + url, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -142,7 +144,7 @@ export class HttpRequestService {
     return this.http.put(environment.api_url + url, body, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 
@@ -167,7 +169,7 @@ export class HttpRequestService {
     return this.http.delete(environment.api_url + url, options)
       .pipe(
         tap((data) => console.log(data)),
-        retry(3),
+        retry(this.retry),
       );
   }
 }
