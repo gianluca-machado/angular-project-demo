@@ -15,29 +15,54 @@
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="{{ 'create_account.form.email_error' | translate }}">
+            <nz-form-control [nzErrorTip]="emailErrorTpl">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="user">
                 <input type="text" nz-input formControlName="email"
                   placeholder="{{ 'login.form.email' | translate }}" />
               </nz-input-group>
+              <ng-template #emailErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('email')">
+                  {{ 'create_account.form.email_error_invalid' | translate }}
+                </ng-container>
+                <ng-container *ngIf="control.hasError('required')">
+                  {{ 'create_account.form.email_error_required' | translate }}
+                </ng-container>
+              </ng-template>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="{{ 'create_account.form.password_error' | translate }}">
+            <nz-form-control [nzErrorTip]="errorPassword">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
-                <input type="password" nz-input formControlName="password"
-                  placeholder="{{ 'create_account.form.password' | translate }}" />
+                <input nz-input type="password" id="password" formControlName="password"
+                  placeholder="{{ 'create_account.form.password' | translate }}"
+                  (ngModelChange)="updateConfirmValidator()" />
               </nz-input-group>
+              <ng-template #errorPassword let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  {{ 'create_account.form.password_error_required' | translate }}
+                </ng-container>
+                <ng-container *ngIf="control.hasError('minlength')">
+                  {{ 'create_account.form.password_error_minlength' | translate }}
+                </ng-container>
+              </ng-template>
             </nz-form-control>
           </nz-form-item>
 
           <nz-form-item>
-            <nz-form-control nzErrorTip="{{ 'create_account.form.confirm_password_error' | translate }}">
+            <nz-form-control [nzErrorTip]="errorTpl">
               <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
                 <input type="password" nz-input formControlName="confirm"
                   placeholder="{{ 'create_account.form.confirm_password' | translate }}" />
               </nz-input-group>
+              <ng-template #errorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                  {{ 'create_account.form.confirm_password_error_required' | translate }}
+                </ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">
+                  {{ 'create_account.form.confirm_password_error_invalid' | translate }}
+                </ng-container>
+              </ng-template>
             </nz-form-control>
           </nz-form-item>
 

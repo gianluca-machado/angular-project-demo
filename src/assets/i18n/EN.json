@@ -36,9 +36,13 @@
       "agreement": "I agree to the <a href=\"{{url}}\">terms and conditions</a>",
       "submit_button": "Create Account",
       "name_error": "Please input your name",
-      "email_error": "Please input your e-mail",
-      "password_error": "Please input your password",
-      "confirm_password_error": "Please confirm your password"
+      "email_error_invalid": "The input is not valid E-mail!",
+      "email_error_required": "Please input your e-mail",
+      "password_error_required": "Please input your password",
+      "password_error_minlength": "The password must be at least 6 characters",
+      "confirm_password_error_invalid": "Two passwords that you enter is inconsistent",
+      "confirm_password_error_required": "Please confirm your password",
+      "agreement_warning": "The terms and conditions must be checked"
     }
   }
 }

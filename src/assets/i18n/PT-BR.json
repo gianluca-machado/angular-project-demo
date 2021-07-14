@@ -36,9 +36,13 @@
       "agreement": "Eu aceito os <a href=\"{{url}}\">termos e condições</a>",
       "submit_button": "Criar Conta",
       "name_error": "Por favor informe seu nome",
-      "email_error": "Por favor informe seu e-mail",
-      "password_error": "Por favor informe sua senha",
-      "confirm_password_error": "Por favor confirme sua senha"
+      "email_error_invalid": "O e-mail informado é inválido",
+      "email_error_required": "Por favor informe seu e-mail",
+      "password_error_required": "Por favor informe sua senha",
+      "password_error_minlength": "A senha deve ter pelo menos 6 caracteres",
+      "confirm_password_error_invalid": "As senhas informadas são inconsistentes",
+      "confirm_password_error_required": "Por favor confirme sua senha",
+      "agreement_warning": "Os termos e condições devem ser verificados"
     }
   }
 }
