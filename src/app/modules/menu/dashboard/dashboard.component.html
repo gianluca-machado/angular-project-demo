@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<nz-card nzTitle="Vendas" [nzExtra]="extraTemplate">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'A preparar'" [nzSuffix]="'vendas'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Pronto para enviar'" [nzSuffix]="'vendas'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Em trânsito'" [nzSuffix]="'vendas'"></nz-statistic>
+    </nz-col>
+    <nz-col [nzSpan]="6">
+      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Concluídas'" [nzSuffix]="'vendas'"></nz-statistic>
+    </nz-col>
+  </nz-row>
+</nz-card>
+
+<ng-template #extraTemplate>
+</ng-template>
