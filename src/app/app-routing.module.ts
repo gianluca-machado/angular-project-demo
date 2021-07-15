@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TokenGuard } from './guards/token/token.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./modules/menu/menu.module').then((m) => m.MenuModule),
+    canActivate: [TokenGuard],
   },
   {
     path: '**',

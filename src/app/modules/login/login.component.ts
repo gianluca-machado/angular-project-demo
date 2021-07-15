@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.patchValue({
         email: 'admin@admin.com.br',
         password: '123456',
+        remember: true,
       });
     }
   }

@@ -21,6 +21,7 @@ import { UtilsService } from './services/utils.service';
 import { ThemeService } from './services/theme.service';
 import { LanguageService } from './services/language.service';
 import { ErrorHandleService } from './services/error-handle.service';
+import { TokenGuard } from './guards/token/token.guard';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ErrorHandleService } from './services/error-handle.service';
     ThemeService,
     LanguageService,
     ErrorHandleService,
+    TokenGuard,
   ],
   bootstrap: [
     AppComponent,
