@@ -33,11 +33,16 @@
 
           <nz-form-item>
             <nz-form-control [nzErrorTip]="errorPassword">
-              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock"
+                [nzSuffix]="suffixTemplatePassword">
                 <input nz-input type="password" id="password" formControlName="password"
                   placeholder="{{ 'create_account.form.password' | translate }}"
-                  (ngModelChange)="updateConfirmValidator()" />
+                  (ngModelChange)="updateConfirmValidator()" [type]="passwordVisible ? 'text' : 'password'" />
               </nz-input-group>
+              <ng-template #suffixTemplatePassword>
+                <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                  (click)="passwordVisible = !passwordVisible"></i>
+              </ng-template>
               <ng-template #errorPassword let-control>
                 <ng-container *ngIf="control.hasError('required')">
                   {{ 'create_account.form.password_error_required' | translate }}
@@ -51,10 +56,16 @@
 
           <nz-form-item>
             <nz-form-control [nzErrorTip]="errorTpl">
-              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock">
+              <nz-input-group nzSize="large" class="border-input-control" nzPrefixIcon="lock"
+                [nzSuffix]="suffixTemplateConfirmPassword">
                 <input type="password" nz-input formControlName="confirm"
-                  placeholder="{{ 'create_account.form.confirm_password' | translate }}" />
+                  placeholder="{{ 'create_account.form.confirm_password' | translate }}"
+                  [type]="confirmPasswordVisible ? 'text' : 'password'" />
               </nz-input-group>
+              <ng-template #suffixTemplateConfirmPassword>
+                <i nz-icon [nzType]="confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+                  (click)="confirmPasswordVisible = !confirmPasswordVisible"></i>
+              </ng-template>
               <ng-template #errorTpl let-control>
                 <ng-container *ngIf="control.hasError('required')">
                   {{ 'create_account.form.confirm_password_error_required' | translate }}

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import faker from 'faker';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ErrorHandleService } from 'src/app/services/error-handle.service';
 import { LanguageService } from 'src/app/services/language.service';
 import { environment } from 'src/environments/environment';
 import { NewService } from './new.service';
@@ -18,6 +19,10 @@ import { NewService } from './new.service';
 export class NewComponent implements OnInit {
   public loading: boolean = false;
 
+  public passwordVisible: boolean = false;
+
+  public confirmPasswordVisible: boolean = false;
+
   public newForm: FormGroup;
 
   public param_agreement: any = { url: 'https://www.thecampusqdl.com/uploads/files/pdf_sample_2.pdf' };
@@ -29,9 +34,9 @@ export class NewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private nzMessageService: NzMessageService,
-    private translate: TranslateService,
     private languageService: LanguageService,
     private newService: NewService,
+    private errorHandleService: ErrorHandleService,
   ) { }
 
   /**
@@ -96,13 +101,11 @@ export class NewComponent implements OnInit {
           const response = await this.newService.createNewUser(value);
           console.log(response);
 
+          const message = await this.languageService.get('create_account.request.success');
+          this.nzMessageService.success(message);
           this.router.navigate(['login']);
         } catch (error) {
-          console.error(error);
-          // email already in use
-
-          // const message = await this.languageService.get('create_account.form.default_error_api');
-          this.nzMessageService.error(error.message);
+          this.errorHandleService.handleHttpError(error);
         } finally {
           this.loading = false;
         }

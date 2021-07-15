@@ -43,6 +43,17 @@
       "confirm_password_error_invalid": "Two passwords that you enter is inconsistent",
       "confirm_password_error_required": "Please confirm your password",
       "agreement_warning": "The terms and conditions must be checked"
+    },
+    "request": {
+      "success": "Account crated with success"
+    }
+  },
+  "api": {
+    "error": {
+      "message": {
+        "email_already_exists": "E-mail already registered",
+        "generic_message": "Connection problem, please try again later."
+      }
     }
   }
 }

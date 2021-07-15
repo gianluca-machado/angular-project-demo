@@ -71,7 +71,7 @@ export class LanguageService {
 
   get(key: string, params: any = {}): Promise<string> {
     return new Promise<string>((resolve) => {
-      this.translate.get('create_account.form.agreement_warning', params).subscribe((text) => {
+      this.translate.get(key, params).subscribe((text) => {
         resolve(text);
       });
     });

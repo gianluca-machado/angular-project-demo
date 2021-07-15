@@ -43,6 +43,17 @@
       "confirm_password_error_invalid": "As senhas informadas são inconsistentes",
       "confirm_password_error_required": "Por favor confirme sua senha",
       "agreement_warning": "Os termos e condições devem ser verificados"
+    },
+    "request": {
+      "success": "Conta criada com sucesso"
+    }
+  },
+  "api": {
+    "error": {
+      "message": {
+        "email_already_exists": "E-mail já cadastrado",
+        "generic_message": "Problema de conexão, tente novamente mais tarde."
+      }
     }
   }
 }
