@@ -23,8 +23,12 @@
       "remember_me": "Remember me",
       "login": "Login",
       "create_account": "Create Account",
-      "email_error": "Please input your e-mail",
+      "email_error_invalid": "The input is not valid E-mail!",
+      "email_error_required": "Please input your e-mail",
       "password_error": "Please input your password"
+    },
+    "request": {
+      "success": "Login success"
     }
   },
   "create_account": {
@@ -52,7 +56,8 @@
     "error": {
       "message": {
         "email_already_exists": "E-mail already registered",
-        "generic_message": "Connection problem, please try again later."
+        "generic_message": "Connection problem, please try again later.",
+        "login_failed_invalid_credentials": "Invalid credentials, please try again"
       }
     }
   }

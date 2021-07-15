@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { ErrorHandleService } from 'src/app/services/error-handle.service';
+import { LanguageService } from 'src/app/services/language.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { environment } from 'src/environments/environment';
+import { LoginService } from './login.service';
 
 /**
  * Login component.
@@ -11,9 +17,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  public loginForm: FormGroup;
+  public loading: boolean = false;
 
   public passwordVisible: boolean = false;
+
+  public loginForm: FormGroup;
 
   /**
    * @ignore
@@ -21,6 +29,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private nzMessageService: NzMessageService,
+    private languageService: LanguageService,
+    private errorHandleService: ErrorHandleService,
+    private loginService: LoginService,
+    private storageService: StorageService,
   ) { }
 
   /**
@@ -32,12 +45,47 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.compose([Validators.required])],
       remember: [false],
     });
+
+    if (!environment.production) {
+      this.loginForm.patchValue({
+        email: 'admin@admin.com.br',
+        password: '123456',
+      });
+    }
   }
 
-  submitForm() {
+  async submitForm() {
     const value = this.loginForm.getRawValue();
     console.log(value);
-    this.router.navigate(['menu']);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const i in this.loginForm.controls) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (this.loginForm.controls.hasOwnProperty(i)) {
+        this.loginForm.controls[i].markAsDirty();
+        this.loginForm.controls[i].updateValueAndValidity();
+      }
+    }
+
+    if (this.loginForm.valid) {
+      this.loading = true;
+      try {
+        const response = await this.loginService.login(value);
+        console.log(response);
+
+        if (this.loginForm.controls.remember.value) {
+          this.storageService.store('login', response);
+        }
+
+        const message = await this.languageService.get('login.request.success');
+        this.nzMessageService.success(message);
+        this.router.navigate(['menu']);
+      } catch (error) {
+        this.errorHandleService.handleHttpError(error);
+      } finally {
+        this.loading = false;
+      }
+    }
   }
 
   clickCreateAccount() {

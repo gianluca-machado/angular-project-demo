@@ -23,8 +23,12 @@
       "remember_me": "Lembrar-me",
       "login": "Entrar",
       "create_account": "Criar Conta",
-      "email_error": "Por favor informe seu e-mail",
+      "email_error_invalid": "O e-mail informado é inválido",
+      "email_error_required": "Por favor informe seu e-mail",
       "password_error": "Por favor informe sua senha"
+    },
+    "request": {
+      "success": "Login realizado com sucesso"
     }
   },
   "create_account": {
@@ -52,7 +56,8 @@
     "error": {
       "message": {
         "email_already_exists": "E-mail já cadastrado",
-        "generic_message": "Problema de conexão, tente novamente mais tarde."
+        "generic_message": "Problema de conexão, tente novamente mais tarde.",
+        "login_failed_invalid_credentials": "Credenciais inválidas, por favor tente novamente"
       }
     }
   }

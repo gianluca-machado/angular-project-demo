@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -44,6 +45,7 @@ export class MenuComponent implements OnInit {
    */
   constructor(
     private router: Router,
+    private storageService: StorageService,
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,11 @@ export class MenuComponent implements OnInit {
     console.log(menu);
 
     this.selectMenu(menu);
+
+    if (menu.route === '/login') {
+      this.storageService.removeItem('login');
+    }
+
     this.router.navigateByUrl(menu.route);
   }
 
