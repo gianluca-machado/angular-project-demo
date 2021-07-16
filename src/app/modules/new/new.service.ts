@@ -10,11 +10,6 @@ export class NewService {
   ) { }
 
   createNewUser(body: any) {
-    return new Promise<any>((resolve, reject) => {
-      this.httpRequestService.postRequest('/users', body).subscribe({
-        next: (data) => resolve(data.body),
-        error: (error) => reject(error),
-      });
-    });
+    return this.httpRequestService.postRequest('/users', body);
   }
 }

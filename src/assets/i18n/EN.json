@@ -49,7 +49,7 @@
       "agreement_warning": "The terms and conditions must be checked"
     },
     "request": {
-      "success": "Account crated with success"
+      "success": "Account created with success"
     }
   },
   "api": {

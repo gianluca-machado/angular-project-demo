@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 // services
 import { HttpRequestService } from './services/http-request.service';
 import { StorageService } from './services/storage.service';
-import { TokenService } from './services/token.service';
 import { UtilsService } from './services/utils.service';
 import { ThemeService } from './services/theme.service';
 import { LanguageService } from './services/language.service';
@@ -39,7 +38,6 @@ import { TokenGuard } from './guards/token/token.guard';
   providers: [
     HttpRequestService,
     StorageService,
-    TokenService,
     UtilsService,
     ThemeService,
     LanguageService,

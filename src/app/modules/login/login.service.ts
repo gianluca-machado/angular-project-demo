@@ -10,11 +10,6 @@ export class LoginService {
   ) { }
 
   login(body: any) {
-    return new Promise<any>((resolve, reject) => {
-      this.httpRequestService.postRequest('/sessions', body).subscribe({
-        next: (data) => resolve(data.body),
-        error: (error) => reject(error),
-      });
-    });
+    return this.httpRequestService.postRequest('/sessions', body);
   }
 }

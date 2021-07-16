@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs';
-import { tap, retry } from 'rxjs/operators';
+import { firstValueFrom, Observable } from 'rxjs';
+import { retry, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { TokenService } from './token.service';
+import { StorageService } from './storage.service';
 
 /**
  * Http Request Provider
@@ -13,24 +12,28 @@ import { TokenService } from './token.service';
 export class HttpRequestService {
   private retry: number = 1;
 
+  private log: boolean = false;
+
   /**
    * @ignore
    */
   constructor(
     private http: HttpClient,
-    public tokenProvider: TokenService,
+    public storageService: StorageService,
   ) { }
 
   /**
    * Get request.
    * @param url Url to request.
    */
-  getRequest(url: string, responseType: any = {}): Observable<any> {
-    return this.http.get(environment.api_url + url, responseType)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+  getRequest(url: string, responseType: any = {}): Promise<any> {
+    return firstValueFrom(
+      this.http.get(environment.api_url + url, responseType)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -38,17 +41,18 @@ export class HttpRequestService {
    * @param url Url to request.
    * @param body Body to request.
    */
-  postRequest(url: string, body: any): Observable<any> {
-    // create request options
+  postRequest(url: string, body: any): Promise<any> {
     const options: any = {
       observe: 'response',
     };
 
-    return this.http.post(environment.api_url + url, body, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return firstValueFrom(
+      this.http.post(environment.api_url + url, body, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -56,19 +60,20 @@ export class HttpRequestService {
    * @param url Url to request.
    * @param body Body to request.
    */
-  putRequest(url: string, body: any): Observable<any> {
-    // create request options
+  putRequest(url: string, body: any): Promise<any> {
     const options = {
       headers: {
         'Content-Type': 'application/json',
       },
     };
 
-    return this.http.put(environment.api_url + url, body, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return firstValueFrom(
+      this.http.put(environment.api_url + url, body, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -78,24 +83,16 @@ export class HttpRequestService {
    * @param type Type of request.
    * @returns Promise Request or Response return.
    */
-  postRequestWithAuthorization(url: string, body: any, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-    // get token
-    const token: string = this.tokenProvider.getToken();
+  async postRequestWithAuthorization(url: string, body: any, contentType: string = 'application/json', replaceToken?: string): Promise<any> {
+    const options = await this.generateAuthorizationOptions(contentType, replaceToken);
 
-    // create request options
-    const options = {
-      headers: {
-        'Content-Type': contentType,
-        Authorization: (replaceToken) || token,
-      },
-    };
-
-    // return
-    return this.http.post(environment.api_url + url, body, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return firstValueFrom(
+      this.http.post(environment.api_url + url, body, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -103,24 +100,16 @@ export class HttpRequestService {
   * @param url Url to do request.
   * @returns Promise Request or Response return.
   */
-  getRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-    // get token
-    const token: string = this.tokenProvider.getToken();
+  async getRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Promise<any> {
+    const options = await this.generateAuthorizationOptions(contentType, replaceToken);
 
-    // create request options
-    const options = {
-      headers: {
-        'Content-Type': contentType,
-        Authorization: (replaceToken) || token,
-      },
-    };
-
-    // return
-    return this.http.get(environment.api_url + url, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return firstValueFrom(
+      this.http.get(environment.api_url + url, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -128,24 +117,16 @@ export class HttpRequestService {
    * @param url Url to do request.
    * @returns Promise Request or Response return.
    */
-  putRequestWithAuthorization(url: string, body: any, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-    // get token
-    const token: string = this.tokenProvider.getToken();
+  async putRequestWithAuthorization(url: string, body: any, contentType: string = 'application/json', replaceToken?: string): Promise<any> {
+    const options = await this.generateAuthorizationOptions(contentType, replaceToken);
 
-    // create request options
-    const options = {
-      headers: {
-        'Content-Type': contentType,
-        Authorization: (replaceToken) || token,
-      },
-    };
-
-    // return
-    return this.http.put(environment.api_url + url, body, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return firstValueFrom(
+      this.http.put(environment.api_url + url, body, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
   }
 
   /**
@@ -153,23 +134,34 @@ export class HttpRequestService {
    * @param url Url to do request.
    * @returns Promise Request or Response return.
    */
-  deleteRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Observable<any> {
-    // get token
-    const token: string = this.tokenProvider.getToken();
+  async deleteRequestWithAuthorization(url: string, contentType: string = 'application/json', replaceToken?: string): Promise<any> {
+    const options = await this.generateAuthorizationOptions(contentType, replaceToken);
 
-    // create request options
+    return firstValueFrom(
+      this.http.delete(environment.api_url + url, options)
+        .pipe(
+          tap((data) => this.logger(data)),
+          retry(this.retry),
+        ),
+    ).then((response: any) => response.body);
+  }
+
+  private async generateAuthorizationOptions(contentType, replaceToken) {
+    const login = await this.storageService.retrieve('login');
+
     const options = {
       headers: {
         'Content-Type': contentType,
-        Authorization: (replaceToken) || token,
+        Authorization: (replaceToken) || `${login.type} ${login.token}`,
       },
     };
 
-    // return
-    return this.http.delete(environment.api_url + url, options)
-      .pipe(
-        tap((data) => console.log(data)),
-        retry(this.retry),
-      );
+    return new Promise<any>((resolve) => resolve(options));
+  }
+
+  private logger(data) {
+    if (this.log) {
+      console.log(data);
+    }
   }
 }

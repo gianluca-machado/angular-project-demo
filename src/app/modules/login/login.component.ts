@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ErrorHandleService } from 'src/app/services/error-handle.service';
@@ -74,9 +74,10 @@ export class LoginComponent implements OnInit {
         const response = await this.loginService.login(value);
         console.log(response);
 
-        if (this.loginForm.controls.remember.value) {
-          this.storageService.store('login', response);
-        }
+        const remember = this.loginForm.controls.remember.value;
+        await this.storageService.store('login', response);
+        await this.storageService.store('remember', remember);
+        await this.storageService.store('first', true);
 
         const message = await this.languageService.get('login.request.success');
         this.nzMessageService.success(message);
