@@ -21,6 +21,8 @@ import { ThemeService } from './services/theme.service';
 import { LanguageService } from './services/language.service';
 import { ErrorHandleService } from './services/error-handle.service';
 import { TokenGuard } from './guards/token/token.guard';
+import { LogoutService } from './services/logout.service';
+import { SettingService } from './services/setting.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { TokenGuard } from './guards/token/token.guard';
     LanguageService,
     ErrorHandleService,
     TokenGuard,
+    LogoutService,
+    SettingService,
   ],
   bootstrap: [
     AppComponent,

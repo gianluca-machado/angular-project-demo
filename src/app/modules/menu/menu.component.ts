@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
+import { LogoutService } from 'src/app/services/logout.service';
+import { SettingService } from 'src/app/services/setting.service';
 
 @Component({
   selector: 'app-menu',
@@ -45,23 +46,26 @@ export class MenuComponent implements OnInit {
    */
   constructor(
     private router: Router,
-    private storageService: StorageService,
+    private logoutService: LogoutService,
+    private settingService: SettingService,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.selectMenuByUrl();
+
+    await this.settingService.load();
   }
 
-  navigate(menu: any) {
+  async navigate(menu: any) {
     console.log(menu);
 
     this.selectMenu(menu);
 
-    if (menu.route === '/login') {
-      this.storageService.removeItem('login');
-    }
-
     this.router.navigateByUrl(menu.route);
+
+    if (menu.route === '/login') {
+      await this.logoutService.logout();
+    }
   }
 
   selectMenu(menu: any) {

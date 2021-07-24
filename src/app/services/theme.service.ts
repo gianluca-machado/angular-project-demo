@@ -13,6 +13,11 @@ export class ThemeService {
     private storageService: StorageService,
   ) { }
 
+  async reset() {
+    this.theme = '';
+    this.setTheme();
+  }
+
   async setDefaultTheme() {
     const storage_theme = await this.storageService.retrieve(this.storage_key);
     if (storage_theme) {
@@ -25,6 +30,11 @@ export class ThemeService {
 
   changeTheme() {
     this.theme = this.theme === 'dark' ? '' : 'dark';
+    this.setTheme();
+  }
+
+  setThemeByLoad(darkmode) {
+    this.theme = darkmode ? 'dark' : '';
     this.setTheme();
   }
 

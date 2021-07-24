@@ -39,12 +39,18 @@ export class LoginComponent implements OnInit {
   /**
    * @ignore
    */
-  ngOnInit() {
+  async ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required])],
       remember: [false],
     });
+
+    const remember = await this.storageService.retrieve('remember');
+    if (remember) {
+      const email = await this.storageService.retrieve('email');
+      this.loginForm.controls.email.setValue(email);
+    }
 
     if (!environment.production) {
       this.loginForm.patchValue({
@@ -77,6 +83,7 @@ export class LoginComponent implements OnInit {
         const remember = this.loginForm.controls.remember.value;
         await this.storageService.store('login', response);
         await this.storageService.store('remember', remember);
+        await this.storageService.store('email', value.email);
         await this.storageService.store('first', true);
 
         const message = await this.languageService.get('login.request.success');

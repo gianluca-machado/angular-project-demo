@@ -55,9 +55,23 @@
   "api": {
     "error": {
       "message": {
+        "setting_not_found_exception": "",
+        "user_not_found_exception": "",
+        "unauthorized": "",
+        "user_not_authorized": "",
+        "login_failed_invalid_credentials": "Credenciais inválidas, por favor tente novamente",
+        "name_required": "",
+        "password_required": "",
+        "password_min": "",
+        "password_max": "",
+        "email_required": "",
+        "email_invalid": "",
         "email_already_exists": "E-mail já cadastrado",
-        "generic_message": "Problema de conexão, tente novamente mais tarde.",
-        "login_failed_invalid_credentials": "Credenciais inválidas, por favor tente novamente"
+        "darkmode_required": "",
+        "darkmode_invalid_boolean": "",
+        "language_required": "",
+        "language_invalid_enum": "",
+        "generic_message": "Problema de conexão, tente novamente mais tarde."
       }
     }
   }

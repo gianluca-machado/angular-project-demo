@@ -17,6 +17,11 @@ export class LanguageService {
     private translate: TranslateService,
   ) { }
 
+  async reset() {
+    this.language = 'pt-BR';
+    this.setLanguage();
+  }
+
   async setDefaultLanguage() {
     this.translate.setDefaultLang('pt-BR');
 
@@ -38,6 +43,11 @@ export class LanguageService {
   setLanguage() {
     this.storageService.store(this.storage_key, this.language);
     this.translate.use(this.language);
+  }
+
+  setLanguageByLoad(language) {
+    this.language = language;
+    this.setLanguage();
   }
 
   getCurrentLanguage() {
