@@ -109,7 +109,7 @@ export class HttpRequestService {
           tap((data) => this.logger(data)),
           retry(this.retry),
         ),
-    ).then((response: any) => response);
+    );
   }
 
   /**
@@ -126,7 +126,7 @@ export class HttpRequestService {
           tap((data) => this.logger(data)),
           retry(this.retry),
         ),
-    ).then((response: any) => response.body);
+    );
   }
 
   /**

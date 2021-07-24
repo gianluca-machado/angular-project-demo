@@ -10,7 +10,7 @@
       </nz-list-item-meta>
       <ul nz-list-item-actions>
         <nz-list-item-action *ngIf="item.actionType === 'switch'">
-          <nz-switch nzSize="default" [(ngModel)]="item.value" (ngModelChange)="item.onChange()"></nz-switch>
+          <nz-switch nzSize="default" [(ngModel)]="item.value" (ngModelChange)="item.onChange($event)"></nz-switch>
         </nz-list-item-action>
         <nz-list-item-action *ngIf="item.actionType === 'select'">
           <nz-select [nzDropdownClassName]="item.class" [nzAllowClear]="false" nzPlaceHolder="Select language"

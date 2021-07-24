@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LanguageService } from 'src/app/services/language.service';
+import { SettingService } from 'src/app/services/setting.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class SettingComponent {
       title: 'settings.darkmode.title',
       value: false,
       actionType: 'switch',
-      onChange: () => this.onChangeDarkMode(),
+      onChange: (darkmode) => this.onChangeDarkMode(darkmode),
     },
     {
       type: 'language',
@@ -45,6 +46,7 @@ export class SettingComponent {
   constructor(
     private themeService: ThemeService,
     private languageService: LanguageService,
+    private settingService: SettingService,
   ) { }
 
   async ngOnInit() {
@@ -59,13 +61,14 @@ export class SettingComponent {
     this.loading = false;
   }
 
-  onChangeDarkMode() {
+  onChangeDarkMode(darkmode: boolean) {
     this.themeService.changeTheme();
+    this.settingService.save('darkmode', darkmode);
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  onChangeLanguage(language) {
+  onChangeLanguage(language: string) {
     this.languageService.changeLanguage(language);
+    this.settingService.save('language', language);
   }
 
   // eslint-disable-next-line class-methods-use-this

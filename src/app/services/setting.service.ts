@@ -27,4 +27,13 @@ export class SettingService {
       this.errorHandleService.handleHttpError(error);
     }
   }
+
+  async save(key: string, value: boolean | string) {
+    try {
+      this.setting[key] = value;
+      this.setting = await this.httpRequestService.putRequestWithAuthorization('/setting', this.setting);
+    } catch (error) {
+      this.errorHandleService.handleHttpError(error);
+    }
+  }
 }
