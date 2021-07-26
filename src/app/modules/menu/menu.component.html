@@ -7,18 +7,21 @@
       </span>
     </div>
 
-    <div class="divider-logo-content">
-      <nz-divider class="divider-logo"></nz-divider>
-    </div>
-
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="!loading">
       <li nz-menu-item [nzSelected]="menu?.selected" *ngFor="let menu of menus" (click)="navigate(menu)"
         [ngClass]="{'no-padding-top': menu?.selected}">
-        <i nz-icon [nzType]="menu.icon.nzType" [nzTheme]="menu.icon.nzTheme"></i>
+        <i nz-icon [nzType]="menu.icon_type" [nzTheme]="menu.icon_theme"></i>
         <span> {{ menu.title | translate }} </span>
       </li>
     </ul>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="loading">
+      <li nz-menu-item [nzSelected]="false" *ngFor="let menu of fake_menu">
+        <nz-skeleton class="menu-skeleton" [nzActive]="true"></nz-skeleton>
+      </li>
+    </ul>
   </nz-sider>
+
   <nz-layout>
     <nz-header class="no-padding">
       <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"

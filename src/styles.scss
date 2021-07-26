@@ -33,3 +33,7 @@ body {
 .fix-virtual-scrolling-height cdk-virtual-scroll-viewport {
   height: 90px !important;
 }
+
+.menu-skeleton .ant-skeleton-title {
+  width: 100% !important;
+}

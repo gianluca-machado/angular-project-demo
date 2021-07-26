@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogoutService } from 'src/app/services/logout.service';
 import { SettingService } from 'src/app/services/setting.service';
+import { MenuService } from './menu.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,37 +10,13 @@ import { SettingService } from 'src/app/services/setting.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  public loading = true;
+
   public isCollapsed = false;
 
-  public menus = [
-    {
-      route: '/menu/dashboard',
-      title: 'menu.item.dashboard',
-      selected: true,
-      icon: {
-        nzType: 'dashboard',
-        nzTheme: 'outline',
-      },
-    },
-    {
-      route: '/menu/setting',
-      title: 'menu.item.settings',
-      selected: false,
-      icon: {
-        nzType: 'setting',
-        nzTheme: 'outline',
-      },
-    },
-    {
-      route: '/login',
-      title: 'menu.item.logout',
-      selected: false,
-      icon: {
-        nzType: 'logout',
-        nzTheme: 'outline',
-      },
-    },
-  ];
+  public menus: any[] = [];
+
+  public fake_menu: any[] = [null, null, null];
 
   /**
    * @ignore
@@ -48,12 +25,16 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private logoutService: LogoutService,
     private settingService: SettingService,
+    private menuService: MenuService,
   ) { }
 
   async ngOnInit() {
     this.selectMenuByUrl();
 
     await this.settingService.load();
+    this.menus = await this.menuService.getMenus();
+
+    this.loading = false;
   }
 
   async navigate(menu: any) {

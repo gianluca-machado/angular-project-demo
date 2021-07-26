@@ -15,16 +15,6 @@
   font-size: x-large;
 }
 
-.divider-logo-content {
-  padding: 0px 3px;
-}
-
-.divider-logo {
-  margin-top: 4px;
-  margin-bottom: 0px;
-  background: white;
-}
-
 nz-footer {
   text-align: center;
 }
@@ -36,11 +26,6 @@ nz-layout {
 .inner-content {
   min-height: 100%;
   border-radius: 5px;
-}
-
-li:first-child {
-  margin-top: -1px;
-  padding-top: 4px;
 }
 
 .no-padding-top {
