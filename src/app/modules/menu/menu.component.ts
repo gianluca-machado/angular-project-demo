@@ -10,9 +10,15 @@ import { MenuService } from './menu.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  public loading = true;
+  public loadingMenu = true;
 
   public isCollapsed = false;
+
+  public showNotification = false;
+
+  public hasNotification = true;
+
+  public user: any;
 
   public menus: any[] = [];
 
@@ -32,9 +38,11 @@ export class MenuComponent implements OnInit {
     this.selectMenuByUrl();
 
     await this.settingService.load();
-    this.menus = await this.menuService.getMenus();
 
-    this.loading = false;
+    this.menus = await this.menuService.getMenus();
+    this.loadingMenu = false;
+
+    this.user = await this.menuService.getUser();
   }
 
   async navigate(menu: any) {
@@ -66,5 +74,13 @@ export class MenuComponent implements OnInit {
     for (let i = 0; i < this.menus.length; i++) {
       this.menus[i].selected = false;
     }
+  }
+
+  openNotification(): void {
+    this.showNotification = true;
+  }
+
+  closeNotification(): void {
+    this.showNotification = false;
   }
 }

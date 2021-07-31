@@ -7,7 +7,7 @@
       </span>
     </div>
 
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="!loading">
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="!loadingMenu">
       <li nz-menu-item [nzSelected]="menu?.selected" *ngFor="let menu of menus" (click)="navigate(menu)"
         [ngClass]="{'no-padding-top': menu?.selected}">
         <i nz-icon [nzType]="menu.icon_type" [nzTheme]="menu.icon_theme"></i>
@@ -15,7 +15,7 @@
       </li>
     </ul>
 
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="loading">
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" *ngIf="loadingMenu">
       <li nz-menu-item [nzSelected]="false" *ngFor="let menu of fake_menu">
         <nz-skeleton class="menu-skeleton" [nzActive]="true"></nz-skeleton>
       </li>
@@ -23,9 +23,23 @@
   </nz-sider>
 
   <nz-layout>
-    <nz-header class="no-padding">
+    <nz-header class="no-padding display-flex">
       <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-        (click)="isCollapsed = !isCollapsed"></i>
+        (click)="isCollapsed = !isCollapsed">
+      </i>
+      <span class="flex-1"></span>
+      <span class="padding-end user-title" (click)="openNotification()" *ngIf="user">
+        {{ user?.name }}
+        <span class="padding cursor-pointer">
+          <nz-badge [nzDot]="hasNotification">
+            <i class="notification-icon" nz-icon nzType="bell" nzTheme="fill"></i>
+          </nz-badge>
+        </span>
+      </span>
+      <span class="padding-end user-title user-title-skeleton display-flex align-items-center"
+        (click)="openNotification()" *ngIf="!user">
+        <nz-skeleton [nzActive]="true" [nzParagraph]="false"> </nz-skeleton>
+      </span>
     </nz-header>
     <nz-content class="margin">
       <div class="inner-content padding">
@@ -37,3 +51,13 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+
+<nz-drawer [nzClosable]="false" [nzVisible]="showNotification" [nzPlacement]="'right'"
+  nzTitle="{{ 'menu.notification' | translate }}" (nzOnClose)="closeNotification()"
+  [nzBodyStyle]="{ overflow: 'auto' }">
+  <ng-container *nzDrawerContent>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </ng-container>
+</nz-drawer>

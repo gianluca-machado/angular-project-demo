@@ -31,6 +31,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { ComponentsModule } from '../components/components.module';
 import { LanguageService } from '../services/language.service';
 
@@ -64,6 +66,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzCardModule,
     NzStatisticModule,
     NzSkeletonModule,
+    NzBadgeModule,
+    NzDrawerModule,
   ],
   declarations: [],
   exports: [
@@ -88,6 +92,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
     NzCardModule,
     NzStatisticModule,
     NzSkeletonModule,
+    NzBadgeModule,
+    NzDrawerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

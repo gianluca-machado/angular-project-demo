@@ -12,4 +12,8 @@ export class MenuService {
   getMenus() {
     return this.httpRequestService.getRequestWithAuthorization('/menu').then((response) => response.data);
   }
+
+  getUser() {
+    return this.httpRequestService.getRequestWithAuthorization('/users');
+  }
 }
