@@ -1,0 +1,20 @@
+$color-primary: #f74d13;
+
+.shopee-card {
+  border: 2px solid $color-primary !important;
+
+  .ant-card-head {
+    border-bottom: 2px solid $color-primary !important;
+    background-color: unquote($color-primary + '80');
+  }
+
+  .ant-card-body {
+    background-color: unquote($color-primary + '30');
+  }
+
+  .ant-card-head-title {
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

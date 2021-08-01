@@ -35,14 +35,14 @@ export class MenuComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.selectMenuByUrl();
-
     await this.settingService.load();
 
     this.menus = await this.menuService.getMenus();
     this.loadingMenu = false;
 
     this.user = await this.menuService.getUser();
+
+    this.selectMenuByUrl();
   }
 
   async navigate(menu: any) {

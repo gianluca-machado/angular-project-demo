@@ -1,0 +1,20 @@
+$color-primary: #0f87f7;
+
+.magalu-card {
+  border: 2px solid $color-primary !important;
+
+  .ant-card-head {
+    border-bottom: 2px solid $color-primary !important;
+    background-color: unquote($color-primary + '80');
+  }
+
+  .ant-card-body {
+    background-color: unquote($color-primary + '30');
+  }
+
+  .ant-card-head-title {
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
