@@ -1,8 +1,9 @@
 {
   "menu": {
     "item": {
-      "settings": "Settings",
       "dashboard": "Dashboard",
+      "connections": "Connections",
+      "settings": "Settings",
       "logout": "Logout"
     },
     "notification": "Notifications"

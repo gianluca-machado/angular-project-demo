@@ -1,8 +1,9 @@
 {
   "menu": {
     "item": {
-      "settings": "Configurações",
       "dashboard": "Painel",
+      "connections": "Conexões",
+      "settings": "Configurações",
       "logout": "Sair"
     },
     "notification": "Notificações"
