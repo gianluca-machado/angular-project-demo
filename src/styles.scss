@@ -44,3 +44,11 @@ body {
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+.border-input-control {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  line-height: 2.5 !important;
+  box-shadow: none !important;
+}

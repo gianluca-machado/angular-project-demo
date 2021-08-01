@@ -1,34 +1,67 @@
-<nz-card nzTitle="Mercado Livre" [nzExtra]="extraTemplateML" class="mercado-livre-card">
-  <!-- <nz-row [nzGutter]="16">
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'A preparar'" [nzSuffix]="'vendas'"></nz-statistic>
+<nz-card nzTitle="Mercado Livre" class="mercado-livre-card">
+  <nz-row [nzGutter]="16">
+    <nz-col [nzSpan]="12" class="padding">
+      <img nz-image width="130px" height="30px" nzSrc="./assets/images/mercado-livre-logo.png" alt="Mercado Livre Logo"
+        nzDisablePreview />
+      <div class="margin-top text-info" [innerHTML]="'connections.mercado-livre.info' | translate"> </div>
     </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Pronto para enviar'" [nzSuffix]="'vendas'"></nz-statistic>
+    <nz-col [nzSpan]="12" class="padding-horizontal padding-top">
+      <form nz-form [formGroup]="mercadoLivreForm">
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="{{ 'connections.mercado-livre.form.client_id_error' | translate }}">
+            <nz-input-group nzSize="large" [nzSuffix]="suffixTemplateMercadoLiverClientId" class="border-input-control">
+              <input type="password" nz-input formControlName="client_id"
+                placeholder="{{ 'connections.mercado-livre.form.client_id' | translate }}"
+                [type]="mercadoLivreClientIdVisible ? 'text' : 'password'" />
+            </nz-input-group>
+            <ng-template #suffixTemplateMercadoLiverClientId>
+              <i nz-icon [nzType]="mercadoLivreClientIdVisible ? 'eye-invisible' : 'eye'"
+                (click)="mercadoLivreClientIdVisible = !mercadoLivreClientIdVisible"></i>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-control nzErrorTip="{{ 'connections.mercado-livre.form.client_secret_error' | translate }}">
+            <nz-input-group nzSize="large" [nzSuffix]="suffixTemplateMercadoLiverClientSecret"
+              class="border-input-control">
+              <input type="password" nz-input formControlName="client_secret"
+                placeholder="{{ 'connections.mercado-livre.form.client_secret' | translate }}"
+                [type]="mercadoLivreClientSecretVisible ? 'text' : 'password'" />
+            </nz-input-group>
+            <ng-template #suffixTemplateMercadoLiverClientSecret>
+              <i nz-icon [nzType]="mercadoLivreClientSecretVisible ? 'eye-invisible' : 'eye'"
+                (click)="mercadoLivreClientSecretVisible = !mercadoLivreClientSecretVisible"></i>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="margin-top">
+          <nz-form-control>
+            <nz-row [nzGutter]="16">
+              <nz-col [nzSpan]="12">
+              </nz-col>
+              <nz-col [nzSpan]="12">
+                <button nz-button nzType="primary" nzSize="large" nzBlock="true" class="text-uppercase font-weight-500"
+                  (click)="submitmercadoLivreForm()" [nzLoading]="mercadoLivreLoading">
+                  {{ 'connections.mercado-livre.form.connect' | translate }}
+                </button>
+              </nz-col>
+            </nz-row>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
     </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Em trânsito'" [nzSuffix]="'vendas'"></nz-statistic>
-    </nz-col>
-    <nz-col [nzSpan]="6">
-      <nz-statistic [nzValue]="(0 | number)!" [nzTitle]="'Concluídas'" [nzSuffix]="'vendas'"></nz-statistic>
-    </nz-col>
-  </nz-row> -->
+  </nz-row>
 </nz-card>
-<ng-template #extraTemplateML>
-  <!-- <img nz-image width="80px" height="20px" nzSrc="./assets/images/mercado-livre-logo.png" alt="Mercado Livre Logo"
-    nzDisablePreview /> -->
-</ng-template>
 
 <!-- shopee -->
-<div class="margin-top"></div>
-<nz-card nzTitle="Shopee" [nzExtra]="extraTemplateShopee" class="shopee-card">
-</nz-card>
-<ng-template #extraTemplateShopee>
-</ng-template>
+<!-- <div class="margin-top"></div>
+<nz-card nzTitle="Shopee" class="shopee-card">
+</nz-card> -->
 
 <!-- magalu -->
-<div class="margin-top"></div>
-<nz-card nzTitle="Magalu" [nzExtra]="extraTemplateMagalu" class="magalu-card">
-</nz-card>
-<ng-template #extraTemplateMagalu>
-</ng-template>
+<!-- <div class="margin-top"></div>
+<nz-card nzTitle="Magalu" class="magalu-card">
+</nz-card> -->

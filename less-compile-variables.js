@@ -4,14 +4,34 @@ module.exports = {
     compact: './src/assets/themes/compact.css',
   },
   toAdd: {
+    variables: [
+      `:root {
+        --mercado-livre-primary-color: 255, 230, 0;
+        --mercado-livre-secondary-color: 45, 50, 119;
+        --mercado-livre-primary-color-rgb: rgb(var(--mercado-livre-primary-color));
+        --mercado-livre-secondary-color-rgb: rgb(var(--mercado-livre-secondary-color));
+        --mercado-livre-primary-color-rgba-80: rgba(var(--mercado-livre-primary-color), 0.8);
+        --mercado-livre-primary-color-rgba-30: rgba(var(--mercado-livre-primary-color), 0.3);
+      }`,
+    ],
     dark: [
       '.inner-content { background: #1f1f1f; }',
       '.logo-text-color { color: #2A9DF4; }',
+      `.mercado-livre-card .ant-card-head {
+        background-color: var(--mercado-livre-primary-color-rgb);
+        filter: contrast(80%);
+      }`,
     ],
     compact: [
       '.inner-content { background: #ffffff; }',
       '.ant-layout-header { background: #ffffff; }',
       '.logo-text-color { color: #ffffff; }',
+      `.mercado-livre-card .ant-card-head {
+        background-color: var(--mercado-livre-primary-color-rgba-80);
+      }`,
+      `.mercado-livre-card .ant-card-body {
+        background-color: var(--mercado-livre-primary-color-rgba-30);
+      }`,
     ],
   },
   toReplace: {

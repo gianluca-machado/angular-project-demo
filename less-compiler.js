@@ -45,6 +45,7 @@ const writeFile = (css, key) => {
 const processData = (css, key) => {
   css = replaceVariables(css, key);
   css = addVariables(css, key);
+  css = addVariables(css, 'variables');
   writeFile(css, key);
 };
 

@@ -54,6 +54,18 @@
       "success": "Conta criada com sucesso"
     }
   },
+  "connections": {
+    "mercado-livre": {
+      "form": {
+        "client_id": "ID do Cliente",
+        "client_id_error": "Por favor informe o seu id de cliente",
+        "client_secret": "Segredo do Cliente",
+        "client_secret_error": "Por favor informe o seu segredo de cliente",
+        "connect": "Conectar"
+      },
+      "info": "Informe o ID do Cliente e o Segredo do Cliente para conectar sua conta Mercado Livre. Para mais informações acesse o link <a href=\"\">como conectar minha conta Mercado Livre</a>"
+    }
+  },
   "api": {
     "error": {
       "message": {

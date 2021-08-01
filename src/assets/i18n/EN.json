@@ -54,6 +54,18 @@
       "success": "Account created with success"
     }
   },
+  "connections": {
+    "mercado-livre": {
+      "form": {
+        "client_id": "Client ID",
+        "client_id_error": "Please input your Client ID",
+        "client_secret": "Client Secret",
+        "client_secret_error": "Please input your Client Secret",
+        "connect": "Connect"
+      },
+      "info": "Enter the Client ID and Client Secret to connect your Mercado Livre account. For more information, go to the link <a href=\"\">how to connect my Mercado Livre account</a>"
+    }
+  },
   "api": {
     "error": {
       "message": {

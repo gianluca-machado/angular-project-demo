@@ -1,21 +1,50 @@
-$color-primary: #ffe600;
-$color-secondary: #2d3277;
+$color-primary: var(--mercado-livre-primary-color-rgb);
+$color-secondary: var(--mercado-livre-secondary-color-rgb);
 
 .mercado-livre-card {
   border: 2px solid $color-primary !important;
 
   .ant-card-head {
     border-bottom: 2px solid $color-primary !important;
-    background-color: unquote($color-primary + '80');
-  }
-
-  .ant-card-body {
-    background-color: unquote($color-primary + '30');
+    color: black;
   }
 
   .ant-card-head-title {
     padding: 8px;
     font-size: 18px;
     font-weight: 700;
+  }
+
+  .ant-input,
+  .ant-input-affix-wrapper {
+    background-color: transparent !important;
+  }
+
+  .ant-input-affix-wrapper:hover,
+  .ant-input-affix-wrapper {
+    border-bottom: 2px solid $color-primary !important;
+  }
+
+  .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: $color-secondary;
+  }
+
+  .text-info {
+    text-align: justify;
+  }
+
+  .ant-btn-primary {
+    background: $color-secondary;
+    border-color: $color-secondary;
+  }
+
+  .ant-btn-primary:hover {
+    background: $color-secondary;
+    filter: brightness(110%) contrast(70%);
+  }
+
+  .ant-btn-primary:focus {
+    background: $color-secondary;
+    filter: brightness(110%) contrast(70%);
   }
 }
