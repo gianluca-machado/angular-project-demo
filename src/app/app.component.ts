@@ -11,7 +11,7 @@ import { ThemeService } from './services/theme.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'ecommerce-integrator-system';
+  title = 'angular-project-demo';
 
   constructor(
     private themeService: ThemeService,

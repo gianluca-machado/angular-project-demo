@@ -1,12 +1,12 @@
 {
-  "name": "ecommerce-integrator-system",
+  "name": "angular-project-demo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "npx ng lint ecommerce-integrator-system",
+    "lint": "npx ng lint angular-project-demo",
     "e2e": "ng e2e",
     "generate:css": "node ./less-compiler.js",
     "start:ssl": "npm run generate:css && ng serve -o --port 4201 --ssl --ssl-key localhost.key --ssl-cert localhost.crt",

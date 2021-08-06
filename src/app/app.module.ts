@@ -32,7 +32,7 @@ import { SettingService } from './services/setting.service';
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
-    BrowserModule.withServerTransition({ appId: 'ecommerce-integrator-system' }),
+    BrowserModule.withServerTransition({ appId: 'angular-project-demo' }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     TranslateModule.forRoot(LanguageService.LoaderForRoot()),
