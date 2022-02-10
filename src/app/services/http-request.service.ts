@@ -156,7 +156,7 @@ export class HttpRequestService {
       },
     };
 
-    return new Promise<any>((resolve) => resolve(options));
+    return new Promise<any>((resolve) => { resolve(options); });
   }
 
   private logger(data) {

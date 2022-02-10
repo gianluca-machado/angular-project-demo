@@ -29,11 +29,11 @@ export class SettingComponent {
       options: [
         {
           label: 'Português - Brasil',
-          value: 'pt-BR',
+          value: 'PT-BR',
         },
         {
           label: 'English',
-          value: 'en',
+          value: 'EN',
         },
       ],
       value: 'pt-BR',

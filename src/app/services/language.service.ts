@@ -8,7 +8,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class LanguageService {
-  private language = 'pt-BR';
+  private language = 'PT-BR';
 
   private storage_key: string = 'language';
 
@@ -18,12 +18,12 @@ export class LanguageService {
   ) { }
 
   async reset() {
-    this.language = 'pt-BR';
+    this.language = 'PT-BR';
     this.setLanguage();
   }
 
   async setDefaultLanguage() {
-    this.translate.setDefaultLang('pt-BR');
+    this.translate.setDefaultLang('PT-BR');
 
     const storage_language = await this.storageService.retrieve(this.storage_key);
     if (storage_language) {

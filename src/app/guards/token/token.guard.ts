@@ -22,15 +22,15 @@ export class TokenGuard implements CanActivate {
 
     if (first) {
       await this.storageService.store('first', false);
-      return new Promise<boolean>((resolve) => resolve(true));
+      return new Promise<boolean>((resolve) => { resolve(true); });
     }
 
     try {
       await this.httpRequestService.postRequestWithAuthorization('/sessions/validate', null);
-      return new Promise<boolean>((resolve) => resolve(true));
+      return new Promise<boolean>((resolve) => { resolve(true); });
     } catch (error) {
       await this.navigateToLogin();
-      return new Promise<boolean>((resolve) => resolve(false));
+      return new Promise<boolean>((resolve) => { resolve(false); });
     }
   }
 

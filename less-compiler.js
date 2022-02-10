@@ -9,10 +9,10 @@ const fs = require('fs');
 const basicStyles = '@import \'./node_modules/ng-zorro-antd/ng-zorro-antd.less\';';
 
 // ng zorro compact theme variables
-const compactThemeVars = require('ng-zorro-antd/compact-theme');
+const compactThemeVars = require('./node_modules/ng-zorro-antd/compact-theme');
 
 // ng zorro dark theme variables
-const darkThemeVars = require('ng-zorro-antd/dark-theme');
+const darkThemeVars = require('./node_modules/ng-zorro-antd/dark-theme');
 
 // ng zorro dark theme variables
 const variables = require('./less-compile-variables');

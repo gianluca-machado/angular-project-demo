@@ -3,8 +3,7 @@ import {
   FormBuilder, FormControl, FormGroup, Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import faker from 'faker';
+import { faker } from '@faker-js/faker';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ErrorHandleService } from 'src/app/services/error-handle.service';
 import { LanguageService } from 'src/app/services/language.service';
