@@ -36,7 +36,7 @@ export class SettingComponent {
           value: 'EN',
         },
       ],
-      value: 'pt-BR',
+      value: 'PT-BR',
       actionType: 'select',
       class: 'fix-virtual-scrolling-height',
       onChange: (language) => this.onChangeLanguage(language),

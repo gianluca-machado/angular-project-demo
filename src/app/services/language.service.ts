@@ -24,8 +24,8 @@ export class LanguageService {
 
   async setDefaultLanguage() {
     this.translate.setDefaultLang('PT-BR');
-
     const storage_language = await this.storageService.retrieve(this.storage_key);
+
     if (storage_language) {
       this.language = storage_language;
     } else {
@@ -41,7 +41,7 @@ export class LanguageService {
   }
 
   setLanguage() {
-    this.storageService.store(this.storage_key, this.language);
+    this.storageService.store(this.storage_key, this.language.toUpperCase());
     this.translate.use(this.language);
   }
 
